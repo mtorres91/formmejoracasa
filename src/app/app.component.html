@@ -262,10 +262,15 @@
         <div class="example-section">
           <mat-radio-group   formControlName="motivo" color="warn"
            aria-labelledby="example-radio-group-label" class="example-radio-group">
-           <mat-radio-button class="example-radio-button"
-            *ngFor="let country of options" [value]="country.value" (change)="changeatrasos($event)" >
-                {{ country.name }}
+           <mat-radio-button class="example-radio-button" value="MEJORA" >
+                Mejora
+                
            </mat-radio-button>
+           <h1>(p. ej., pintura, azulejos, revestimiento impermeable, puertas o ventanas nuevas. También puede incluir mejoras importantes: p. ej., cambiar un techo de estaño por una losa de concreto, etc.)</h1>
+           <mat-radio-button class="example-radio-button" value="AMPLIACION"  >
+                Ampliación
+           </mat-radio-button>
+           <h1>(p. ej., agregar una habitación, un baño o una cocina más, un segundo piso, escalera, etc.)</h1>
           </mat-radio-group>
           <div *ngIf="submitted && fom['motivo'].errors" class="invalid-feedback">
               <div *ngIf="fom['motivo'].errors['required']">Es requerido</div>
