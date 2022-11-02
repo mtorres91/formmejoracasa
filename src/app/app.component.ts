@@ -115,11 +115,12 @@ optionslive: Array<any> = [
   enviocorreo(){
     var CORREO="";
      if(this.formof.value.ubicacion === "GDL"){
-      var CORREO="From:Shernandez<shernandez.of@gmail.com>";
+      var CORREO="From:mario<teatendemosorpotunidad@gmail.com>";
+      //var CORREO="From:Shernandez<shernandez.of@gmail.com>";
      }
      if(this.formof.value.ubicacion === "CDMX"){
-      //var CORREO="From:mario<teatendemosorpotunidad@gmail.com>";
-      var CORREO="From:Agallinate<agallinateoportunidad@gmail.com>";
+      var CORREO="From:mario<teatendemosorpotunidad@gmail.com>";
+      //var CORREO="From:Agallinate<agallinateoportunidad@gmail.com>";
      }
 
 
@@ -249,7 +250,7 @@ optionslive: Array<any> = [
     
 
     if(event.value === "Si"){
-      
+
 
       btn?.removeAttribute('disabled');
       btn?.setAttribute('style', 'opacity:1;');
