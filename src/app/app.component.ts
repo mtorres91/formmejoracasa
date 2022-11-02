@@ -249,6 +249,7 @@ optionslive: Array<any> = [
     
 
     if(event.value === "Si"){
+      
 
       btn?.removeAttribute('disabled');
       btn?.setAttribute('style', 'opacity:1;');
