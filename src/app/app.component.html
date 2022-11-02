@@ -1,0 +1,455 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-27ZYGQ165G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  gtag('config', 'G-27ZYGQ165G');
+</script>
+</head>
+<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+
+<style>
+
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    background-color: #232323;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 316px;
+  }
+
+
+
+  .content {
+    display: flex;
+    margin: 120px auto 32px;
+    padding: 0 20px;
+    max-width: 1100px;
+    min-width: none;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+
+  }
+
+
+
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+   /* Responsive Styles */
+  @media screen and (max-width: 1024px) {
+
+
+  .toolbar img {
+    margin: 0 0px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+
+  }
+
+}
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+  .content {
+    margin: 90px auto 0px;
+    padding: 0 0px;
+  }
+}
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+        #specifyColor {
+            accent-color: red;
+        }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/img/ic_launcher.png">
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="250"
+    alt="Angular Logo"
+
+    src="assets/img/of-logo.png"
+  />
+
+</div>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-27ZYGQ165G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-27ZYGQ165G');
+</script>
+
+<div class="content" role="main" >
+
+  <!-- Highlight Card -->
+  <mat-card id="i" >
+    <mat-card-title class="title">Descubre tu oferta en un solo paso</mat-card-title>
+    <mat-card-subtitle class="subtitle">Responde estas preguntas para ayudarnos a determinar las ofertas de préstamos que te corresponden.</mat-card-subtitle>
+    <mat-card-content>
+        <form [formGroup]="formof" (ngSubmit)="onSubmit2()" >
+
+        <mat-label>¿Cuento con al menos 25 años de edad?</mat-label>
+        <p>
+          <div class="example-section">
+            <mat-radio-group formControlName="mayor"
+             aria-labelledby="example-radio-group-label" class="example-radio-group">
+             <mat-radio-button class="example-radio-button"  color="warn"
+              *ngFor="let country of options" [value]="country.name" (change)="changemayor($event)">
+                  {{ country.name }}
+             </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="formof.value['mayor'] ==='No'" class="invalid-feedback">Actualmente para el producto PYME es necesario que el cliente cuente con al menos 25 años</div>
+            <div *ngIf="submitted && fom['mayor'].errors" class="invalid-feedback">
+              <div *ngIf="fom['mayor'].errors['required']">Es requerido</div>
+
+            </div>
+         </div>
+         <mat-label>¿Eres propietario o rentas tu casa?</mat-label>
+        <p>
+          <div class="example-section">
+            <mat-radio-group formControlName="propietario" color="warn"
+             aria-labelledby="example-radio-group-label" class="example-radio-group">
+             <mat-radio-button class="example-radio-button"
+              *ngFor="let country of optionscasa" [value]="country.name" (change)="changepropietario($event)">
+                  {{ country.name }}
+             </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="formof.value['propietario'] ==='Rento'" class="invalid-feedback">Actualmente para el producto mejora tu hogar</div>
+            <div *ngIf="submitted && fom['propietario'].errors" class="invalid-feedback">
+              <div *ngIf="fom['propietario'].errors['required']">Es requerido</div>
+            </div>
+         </div>
+         <mat-label>¿Dónde vives?</mat-label>
+        <p>
+          <div class="example-section">
+            <mat-radio-group formControlName="ubicacion" color="warn"
+             aria-labelledby="example-radio-group-label" class="example-radio-group">
+             <mat-radio-button class="example-radio-button"
+              *ngFor="let country of optionslive" [value]="country.value" (change)="changeubicacion($event)">
+                  {{ country.name }}
+             </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="formof.value['ubicacion'] ==='OTRO'" class="invalid-feedback">Actualmente para solo tenemos presencia en el Area Metropolitana de CDMX y Guadalajara</div>
+
+            <div *ngIf="submitted && fom['ubicacion'].errors" class="invalid-feedback">
+              <div *ngIf="fom['ubicacion'].errors['required']">Es requerido</div>
+            </div>
+         </div>
+
+
+         <div class="form-group">
+         <mat-label>¿Cuanto es el prestamo que necesita?</mat-label>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <input matInput placeholder="Min $50 000 Max $80 000" 
+                   type="number"
+                   formControlName="prestamo"
+                   id="pre"
+                   [ngClass]="{ 'is-invalid': submitted && fom['prestamo'].errors }"
+                   />
+                   <span matPrefix>$&nbsp;</span>
+
+          </mat-form-field>
+
+          <div *ngIf="submitted && fom['prestamo'].errors" class="invalid-feedback">
+            <div *ngIf="fom['prestamo'].errors['required']">Es requerido</div>
+          </div>
+          <div *ngIf="fom['prestamo'].errors" class="invalid-feedback">
+            <div *ngIf="fom['prestamo'].errors['min']">
+              Monto minimo $50 000
+            </div>
+            <div *ngIf="fom['prestamo'].errors['max']">
+              Monto maximo $80 000
+            </div>
+          </div>
+        </div>
+        <mat-label>¿Cuál es tu ingreso familiar mensual promedio?</mat-label>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput placeholder="Ingresar monto"
+          type="number"
+          formControlName="ingreso"
+          id="ing"
+          [ngClass]="{ 'is-invalid': submitted && fom['ingreso'].errors }"
+          />
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+        <div *ngIf="submitted && fom['ingreso'].errors" class="invalid-feedback">
+          <div *ngIf="fom['ingreso'].errors['required']">Es requerido</div>
+        </div>
+
+        <mat-label>¿En promedio, cuáles son los gastos mensuales de tus necesidades y las de tu familia?(es decir, servicios públicos, alimentos, educación, cuidado de niños, etc.)</mat-label>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput placeholder="Ingresar monto"
+          type="number"
+          formControlName="gastos"
+          id="gas"
+          [ngClass]="{ 'is-invalid': submitted && fom['gastos'].errors }"/>
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+        <div *ngIf="submitted && fom['gastos'].errors" class="invalid-feedback">
+          <div *ngIf="fom['gastos'].errors['required']">Es requerido</div>
+        </div>
+
+
+        <mat-label>¿Tiene algún préstamo en atrasos a un banco u otra institución financiera?</mat-label>
+        <div class="example-section">
+          <mat-radio-group   formControlName="atrasos" color="warn"
+           aria-labelledby="example-radio-group-label" class="example-radio-group">
+           <mat-radio-button class="example-radio-button"
+            *ngFor="let country of options" [value]="country.value" (change)="changeatrasos($event)" >
+                {{ country.name }}
+           </mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="submitted && fom['atrasos'].errors" class="invalid-feedback">
+              <div *ngIf="fom['atrasos'].errors['required']">Es requerido</div>
+            </div>
+       </div>
+
+       <mat-label>¿Para cuál de los siguientes motivos utilizaras el préstamo?</mat-label>
+        <div class="example-section">
+          <mat-radio-group   formControlName="motivo" color="warn"
+           aria-labelledby="example-radio-group-label" class="example-radio-group">
+           <mat-radio-button class="example-radio-button"
+            *ngFor="let country of options" [value]="country.value" (change)="changeatrasos($event)" >
+                {{ country.name }}
+           </mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="submitted && fom['motivo'].errors" class="invalid-feedback">
+              <div *ngIf="fom['motivo'].errors['required']">Es requerido</div>
+            </div>
+       </div>
+
+       <mat-label>¿Estarías dispuesto a recibir algunos consejos sobre cómo completar la mejora, remodelación o ampliación de su vivienda?</mat-label>
+        <div class="example-section">
+          <mat-radio-group   formControlName="consejo" color="warn"
+           aria-labelledby="example-radio-group-label" class="example-radio-group">
+           <mat-radio-button class="example-radio-button"
+            *ngFor="let country of options" [value]="country.value" (change)="changeatrasos($event)" >
+                {{ country.name }}
+           </mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="submitted && fom['consejo'].errors" class="invalid-feedback">
+              <div *ngIf="fom['consejo'].errors['required']">Es requerido</div>
+            </div>
+       </div>
+
+        <button
+          mat-raised-button
+          class="login-button"
+          type="submit" id="btn">
+          Continuar
+        </button>
+        <div >
+          <a  class="link" style="color: #e0834f" href="https://www.oportunidadfinanzas.com.mx/mejora-tu-negocio">DE VUELTA A INICIO</a>
+        </div>
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <br>
+
+  <mat-card  style="display: none" id="m2" >
+    <mat-card-title *ngIf="show_dialog1" class="title">Según las respuestas que ingresaste, necesitamos más información.</mat-card-title>
+    <mat-card-title *ngIf="show_dialogfelicidades" class="title">🎉Felicidades usted ha precalificado a nuestro préstamo!!</mat-card-title>
+    <mat-card-subtitle class="subtitle">Para hablar sobre su proceso de solicitud y el monto específico del préstamo, es necesario que deje su información a continuación y nos contactaremos con usted.</mat-card-subtitle>
+    <mat-card-content>
+        <mat-card-title class="sim" id="id0">Simulacion para un crédito de</mat-card-title>
+         <h1 class="mensualidad" id="id01"> A 12 Meses</h1>
+         <h1 class="mensualidad" id="id02"> A 24 Meses</h1>
+    
+        <form [formGroup]="formofdatos" (ngSubmit)="onSubmit2datos()" >
+
+          <div class="form-group">
+            <mat-label>Nombre</mat-label>
+
+             <mat-form-field class="example-full-width" appearance="fill">
+               <input matInput placeholder="Ingresar nombre"
+                      type="name"
+                      formControlName="nombre"
+                      [ngClass]="{ 'is-invalid': submitted && fomdatos['nombre'].errors }"
+                      />
+
+             </mat-form-field>
+             <div *ngIf="submitted && fomdatos['nombre'].errors" class="invalid-feedback">
+               <div *ngIf="fomdatos['nombre'].errors['required']">Nombre es requerido</div>
+             </div>
+           </div>
+
+        <mat-label>Telefono celular</mat-label>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput placeholder="Ingresar celular"
+          type="text"
+          maxlength="10"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+          formControlName="celular"
+          [ngClass]="{ 'is-invalid': submitted && fomdatos['celular'].errors }"
+          />
+          <mat-icon matPrefix>phone</mat-icon>
+        </mat-form-field>
+        <div *ngIf="submitted && fomdatos['celular'].errors" class="invalid-feedback">
+          <div *ngIf="fomdatos['celular'].errors['required']">Telefono es requerido</div>
+          <div *ngIf="fomdatos['celular'].errors['pattern']">Ingrese el número de teléfono móvil a 10 dígitos.</div>
+
+
+        </div>
+
+        <mat-label>Email</mat-label>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput placeholder="Ingresar monto"
+          type="name"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && fomdatos['email'].errors }"/>
+          <mat-icon matPrefix>email</mat-icon>
+        </mat-form-field>
+        <div *ngIf="submitted && fomdatos['email'].errors" class="invalid-feedback">
+          <div *ngIf="fomdatos['email'].errors['required']">Email es requerido</div>
+          <div *ngIf="fomdatos['email'].errors['email']">Email es invalido</div>
+        </div>
+
+
+        <button
+          mat-raised-button
+          class="login-button"
+          type="submit">
+          Enviar
+        </button>
+        <div >
+          <a  class="link" style="color: #e0834f" href="https://www.oportunidadfinanzas.com.mx/mejora-tu-negocio">DE VUELTA A INICIO</a>
+        </div>
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card   id="m3" class="cardgracias" style="display: none">
+    <mat-card-title class="title2">¡Gracias!</mat-card-title>
+    <mat-card-subtitle class="subtitle">Uno de los miembros de nuestro equipo se comunicará contigo pronto via celular o whatsapp, o si quieres comunicarte de inmediato manda mensaje via whatsapp</mat-card-subtitle>
+    <mat-card-content>
+
+      <a   class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=523314101956&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%21" target="_blank">          
+        <button id="wgdlpre" style="display: none" mat-raised-button class="login-button">
+          <img
+            src="assets/img/whatsapp-24.png"
+          /> Contacto por whatsapp
+        </button></a>
+        
+      <a  class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=525541853346&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%21" target="_blank">          
+        <button id="wcdmxpre" style="display: none" mat-raised-button class="login-button">
+          <img
+            src="assets/img/whatsapp-24.png"
+          /> Contacto por whatsapp
+        </button></a>
+
+        <a   class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=523314101956&text=Hola%2C%20Cliente%20Formulario%20Nececito%20mas%20informacion%21" target="_blank">          
+          <button id="wgdl" style="display: none" mat-raised-button class="login-button">
+            <img
+              src="assets/img/whatsapp-24.png"
+            /> Contacto por whatsapp
+          </button></a>
+          
+        <a  class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=525541853346&text=Hola%2C%20Cliente%20Formulario%20Nececito%20mas%20informacion%21" target="_blank">          
+          <button id="wcdmx" style="display: none" mat-raised-button class="login-button">
+            <img
+              src="assets/img/whatsapp-24.png"
+            /> Contacto por whatsapp
+          </button></a>
+
+        <a  class="link" style="color: #e0834f" href="https://solicitud.oportunidadfinanzas.com.mx/landing" target="_blank">         
+
+          <button
+            mat-raised-button
+            class="login-button" style="display: none" id="solcalificado">
+            Tramitar Solicitud en Linea
+          </button></a>
+
+      <a  class="link" style="color: #e0834f" href="https://www.oportunidadfinanzas.com.mx/mejora-tu-negocio">
+    
+
+        <button
+          mat-raised-button
+          class="login-button">
+          De vuelta a inicio
+        </button></a>
+
+        <div >
+        </div>
+
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
+    <title>Gray Clouds Background</title>
+    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
+  </svg>
+
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+

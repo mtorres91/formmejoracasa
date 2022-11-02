@@ -1,0 +1,189 @@
+.example-card {
+    max-width: 1000px;
+    min-width: none;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+  
+
+
+  .login-button {
+    margin-top: 20px;
+    display: block;
+    width: 70%;
+    height: 70px;
+    margin: 20px auto;
+    background-color: #e0834f;
+    color: rgb(238, 238, 238);
+    font-size: 22px;
+  }
+
+.link {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    margin: 50% auto;
+    font-size: 16px;
+    color: rgb(238, 238, 238);
+    align-content: center;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+
+  }
+  mat-card{
+    border-radius: 8px;
+  }
+.title{
+
+    background-color: #e1e6e3;
+    margin: -16px;
+
+    text-align: center;
+    border-radius: 8px;
+    height: 140px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+
+
+
+}
+
+.title2{
+
+   color: #e0834f;
+
+   text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+
+}
+.subtitle{
+
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #686868;
+
+
+    font-size: 18px;
+    margin-bottom: -30px;
+
+}
+
+
+
+.mensualidad{
+
+  margin: auto;
+  display: flex;
+  color: #e0834f;
+  font-size: 14px;
+  margin-top: 10px;
+
+}
+.sim{
+
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+  color: #e0834f;
+  font-size: 22px;
+  font-weight:500;
+
+}
+mat-label {
+    padding-top: 30px;
+    margin: auto;
+    display: flex;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+
+}
+
+
+mat-card .cardgracias{
+    height: 500px;
+}
+.sub{
+    color: #686868;
+    font-size: 16px;
+}
+.example-radio-button{
+    color:#686868;
+    margin-top: 16px;
+    display: flex;
+}
+
+input[type=checkbox] + label {
+    display: inline-block;
+    position: relative;
+    padding: 8px;
+    background-color: #A7D8A7;
+    border: 1px dotted #1E441E;
+    border-radius: 4px;
+
+}
+
+
+p {
+    font-family: Lato;
+  }
+
+  #root {
+    padding: 30px;
+  }
+
+  .register-form {
+    max-width: 350px;
+    margin: auto;
+  }
+
+  .invalid-feedback{
+    color: red;
+  }
+
+  @media screen and (max-width: 1000px) {
+
+}
+
+
+  @media screen and (max-width: 640px) {
+    .title{
+        font-size: 23px;
+        font-weight: 400;
+    }
+
+    .subtitle{
+        font-size: 16px;
+        font-weight: 400;
+        margin: 40px;
+        height: 150px;
+        font-weight: 500;
+        margin-bottom: -30px;
+    }
+
+    mat-label {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .login-button {
+        height: 60px;
+        margin: 20px auto;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+  }
