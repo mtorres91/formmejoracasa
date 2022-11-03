@@ -138,25 +138,8 @@
     <mat-card-subtitle class="subtitle">Responde estas preguntas para ayudarnos a determinar las ofertas de préstamos que te corresponden.</mat-card-subtitle>
     <mat-card-content>
         <form [formGroup]="formof" (ngSubmit)="onSubmit2()" >
-
-        <mat-label>¿Cuento con al menos 25 años de edad?</mat-label>
-        <p>
-          <div class="example-section">
-            <mat-radio-group formControlName="mayor"
-             aria-labelledby="example-radio-group-label" class="example-radio-group">
-             <mat-radio-button class="example-radio-button"  color="warn"
-              *ngFor="let country of options" [value]="country.name" (change)="changemayor($event)">
-                  {{ country.name }}
-             </mat-radio-button>
-            </mat-radio-group>
-            <div *ngIf="formof.value['mayor'] ==='No'" class="invalid-feedback">Actualmente para el producto PYME es necesario que el cliente cuente con al menos 25 años</div>
-            <div *ngIf="submitted && fom['mayor'].errors" class="invalid-feedback">
-              <div *ngIf="fom['mayor'].errors['required']">Es requerido</div>
-
-            </div>
-         </div>
          <mat-label>¿Eres propietario o rentas tu casa?</mat-label>
-        <p>
+        
           <div class="example-section">
             <mat-radio-group formControlName="propietario" color="warn"
              aria-labelledby="example-radio-group-label" class="example-radio-group">
@@ -165,7 +148,7 @@
                   {{ country.name }}
              </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="formof.value['propietario'] ==='Rento'" class="invalid-feedback">Actualmente para el producto mejora tu hogar</div>
+            <div *ngIf="formof.value['propietario'] ==='Rento'" class="invalid-feedback">Actualmente para el producto mejora tu hogar es necesario ser propietario</div>
             <div *ngIf="submitted && fom['propietario'].errors" class="invalid-feedback">
               <div *ngIf="fom['propietario'].errors['required']">Es requerido</div>
             </div>
@@ -388,14 +371,14 @@
     <mat-card-subtitle class="subtitle">Uno de los miembros de nuestro equipo se comunicará contigo pronto via celular o whatsapp, o si quieres comunicarte de inmediato manda mensaje via whatsapp</mat-card-subtitle>
     <mat-card-content>
 
-      <a   class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=523314101956&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%21" target="_blank">          
+      <a   class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=523314101956&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%20Mejora%20Casa%21" target="_blank">          
         <button id="wgdlpre" style="display: none" mat-raised-button class="login-button">
           <img
             src="assets/img/whatsapp-24.png"
           /> Contacto por whatsapp
         </button></a>
         
-      <a  class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=525541853346&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%21" target="_blank">          
+      <a  class="link"  style="color: #e0834f" href="https://api.whatsapp.com/send?phone=525541853346&text=Hola%2C%20Cliente%20Formulario%20PreCalificado%20Nececito%20mas%20informacion%20Mejora%20Casa%21" target="_blank">          
         <button id="wcdmxpre" style="display: none" mat-raised-button class="login-button">
           <img
             src="assets/img/whatsapp-24.png"

@@ -70,7 +70,6 @@ optionslive: Array<any> = [
     prestamo: new FormControl(''),
     ingreso: new FormControl(''),
     gastos: new FormControl(''),
-    mayor: new FormControl(''),
     propietario: new FormControl(''),
     ubicacion: new FormControl(''),
     atrasos: new FormControl(''),
@@ -115,20 +114,18 @@ optionslive: Array<any> = [
   enviocorreo(){
     var CORREO="";
      if(this.formof.value.ubicacion === "GDL"){
-      var CORREO="From:mario<teatendemosorpotunidad@gmail.com>";
-      //var CORREO="From:Shernandez<shernandez.of@gmail.com>";
+      var CORREO="From:OF<teatendemos@oportunidadfinanzas.com.mx>";
      }
      if(this.formof.value.ubicacion === "CDMX"){
-      var CORREO="From:mario<teatendemosorpotunidad@gmail.com>";
-      //var CORREO="From:Agallinate<agallinateoportunidad@gmail.com>";
+      var CORREO="From:OF<teatendemos@oportunidadfinanzas.com.mx>";
      }
 
 
     let params ={
       email:CORREO,
-      asunto:"Nueva Solicitud PYME",
-      mensaje:("<p style='font-weight:bold;'>Has recibido una nueva solicitud PYME </p></p> <p style='font-weight:bold;'>Nombre</p>"+this.formofdatos.value.nombre+"</p><p style='font-weight:bold;'>Telefono Celular</p>"+this.formofdatos.value.celular+"</p> <p style='font-weight:bold;'>Email</p>"+this.formofdatos.value.email+"</p><p style='font-weight:bold;'>Monto</p>"+this.formof.value.prestamo+"</p><p style='font-weight:bold;'>Ingresos Negocio</p>"+this.formof.value.ingreso+
-      " <p style='font-weight:bold;'>Gastos Familiares</p>"+this.formof.value.gastos+" <p style='font-weight:bold;'>Atrasos en otro Prestamo</p>"+this.formof.value.atrasos)
+      asunto:"Nueva Solicitud Mejora Casa",
+      mensaje:("<p style='font-weight:bold;'>Has recibido una nueva solicitud Mejora Casa "+this.formof.value.ubicacion+"</p></p> <p style='font-weight:bold;'>Nombre</p>"+this.formofdatos.value.nombre+"</p><p style='font-weight:bold;'>Telefono Celular</p>"+this.formofdatos.value.celular+"</p> <p style='font-weight:bold;'>Email</p>"+this.formofdatos.value.email+"</p><p style='font-weight:bold;'>Monto</p>"+this.formof.value.prestamo+"</p><p style='font-weight:bold;'>Ingresos Negocio</p>"+this.formof.value.ingreso+
+      " <p style='font-weight:bold;'>Gastos Familiares</p>"+this.formof.value.gastos+" <p style='font-weight:bold;'>Atrasos en otro Prestamo</p>"+this.formof.value.atrasos+" <p style='font-weight:bold;'>Motivo del préstamo</p>"+this.formof.value.motivo+" <p style='font-weight:bold;'>Dispuesto a recibir algunos consejos</p>"+this.formof.value.consejo)
     }
     ///let headers = new HttpHeaders({
     //  'Access-Control-Allow-Origin' : '*'
@@ -165,7 +162,7 @@ optionslive: Array<any> = [
 
   ngOnInit(): void {
 
-    this.email = "mata9125@gmail.com";
+    this.email = "m@gmail.com";
     this.name = "Hayden Pierce";
     this.message = "Hello, this is Hayden.";
 
@@ -178,7 +175,6 @@ optionslive: Array<any> = [
         prestamo: ['', [Validators.required,Validators.max(80000), Validators.min(50000)]],
         ingreso: ['', Validators.required],
         gastos: ['', Validators.required],
-        mayor: ['', [Validators.required]],
         propietario: ['', [Validators.required]],
         ubicacion: ['', [Validators.required]],
         atrasos: ['', [Validators.required]],
