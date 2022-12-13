@@ -179,7 +179,8 @@
                    type="number"
                    formControlName="prestamo"
                    id="pre"
-                   [ngClass]="{ 'is-invalid': submitted && fom['prestamo'].errors }"
+                   [ngClass]="{ 'is-invalid': submitted && fom['prestamo'].errors } "
+                   (ngModelChange)="valuechange2($event)" 
                    />
                    <span matPrefix>$&nbsp;</span>
 
@@ -197,34 +198,25 @@
             </div>
           </div>
         </div>
-        <mat-label>¿Cuál es tu ingreso familiar mensual promedio?</mat-label>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input matInput placeholder="Ingresar monto"
-          type="number"
-          formControlName="ingreso"
-          id="ing"
-          [ngClass]="{ 'is-invalid': submitted && fom['ingreso'].errors }"
-          />
-          <span matPrefix>$&nbsp;</span>
-        </mat-form-field>
-        <div *ngIf="submitted && fom['ingreso'].errors" class="invalid-feedback">
-          <div *ngIf="fom['ingreso'].errors['required']">Es requerido</div>
-        </div>
-
-        <mat-label>¿En promedio, cuáles son los gastos mensuales de tus necesidades y las de tu familia?(es decir, servicios públicos, alimentos, educación, cuidado de niños, etc.)</mat-label>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input matInput placeholder="Ingresar monto"
-          type="number"
-          formControlName="gastos"
-          id="gas"
-          [ngClass]="{ 'is-invalid': submitted && fom['gastos'].errors }"/>
-          <span matPrefix>$&nbsp;</span>
-        </mat-form-field>
-        <div *ngIf="submitted && fom['gastos'].errors" class="invalid-feedback">
-          <div *ngIf="fom['gastos'].errors['required']">Es requerido</div>
-        </div>
+        <div  style="display: none" id="monto">
+          <mat-card-title class="sim" id="sid0">Simulacion para un crédito de</mat-card-title>
+          <h1 class="mensualidad" id="sid02">Pago mensual a 24 meses</h1>     
+        
+        <mat-label id="sid02P">¿Puede pagar?</mat-label>
+        <div class="example-section">
+          <mat-radio-group   formControlName="capacidad" color="warn"
+           aria-labelledby="example-radio-group-label" class="example-radio-group">
+           <mat-radio-button class="example-radio-button"
+            *ngFor="let country of options" [value]="country.value" (change)="changemayor($event)" >
+                {{ country.name }}
+           </mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="submitted && fom['capacidad'].errors" class="invalid-feedback">
+              <div *ngIf="fom['capacidad'].errors['required']">Es requerido</div>
+            </div>
+       </div>
+      </div>
 
 
         <mat-label>¿Tiene algún préstamo en atrasos a un banco u otra institución financiera?</mat-label>
