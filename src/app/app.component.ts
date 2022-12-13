@@ -21,6 +21,34 @@ declare let gtag: Function;
 })
 export class AppComponent {
 
+  country: FormGroup = new FormGroup({
+    second: new FormControl(''),
+    first: new FormControl('')
+  });
+
+
+  changeFn(abc: { target: { value: string; }; }) {
+    this.country.value.first = abc.target.value;
+  }
+  modelChangeFn(abc: string) {
+    this.country.value.second = abc;
+  }
+
+  user = new User(); 
+
+  userNamengmodelchange(value: string | undefined){
+    console.log(value);          //Changed Value
+    console.log(this.user.Name)  //undefined
+    this.user.Name = value; // Update the value here
+}
+
+
+  phoneNumberngmodelchange(value: Number | undefined){
+    this.user.PhoneNumber = value;
+    console.log(value);
+
+  }
+
 
   private apiurl='/api/filter';
   private apiurl1='/api/envio';
@@ -66,10 +94,11 @@ optionslive: Array<any> = [
 
 
 
+
+
   formof: FormGroup = new FormGroup({
     prestamo: new FormControl(''),
-    ingreso: new FormControl(''),
-    gastos: new FormControl(''),
+    capacidad: new FormControl(''),
     propietario: new FormControl(''),
     ubicacion: new FormControl(''),
     atrasos: new FormControl(''),
@@ -93,6 +122,10 @@ optionslive: Array<any> = [
     confirmPassword: new FormControl(''),
     acceptTerms: new FormControl(false),
   });
+
+ myGroup: FormGroup = new FormGroup({
+    firstName: new FormControl()
+});
 
 
   submitted = false;
@@ -119,13 +152,11 @@ optionslive: Array<any> = [
      if(this.formof.value.ubicacion === "CDMX"){
       var CORREO="From:OF<teatendemos@oportunidadfinanzas.com.mx>";
      }
-
-
     let params ={
       email:CORREO,
       asunto:"Nueva Solicitud Mejora Casa",
-      mensaje:("<p style='font-weight:bold;'>Has recibido una nueva solicitud Mejora Casa "+this.formof.value.ubicacion+"</p></p> <p style='font-weight:bold;'>Nombre</p>"+this.formofdatos.value.nombre+"</p><p style='font-weight:bold;'>Telefono Celular</p>"+this.formofdatos.value.celular+"</p> <p style='font-weight:bold;'>Email</p>"+this.formofdatos.value.email+"</p><p style='font-weight:bold;'>Monto</p>"+this.formof.value.prestamo+"</p><p style='font-weight:bold;'>Ingresos Negocio</p>"+this.formof.value.ingreso+
-      " <p style='font-weight:bold;'>Gastos Familiares</p>"+this.formof.value.gastos+" <p style='font-weight:bold;'>Atrasos en otro Prestamo</p>"+this.formof.value.atrasos+" <p style='font-weight:bold;'>Motivo del préstamo</p>"+this.formof.value.motivo+" <p style='font-weight:bold;'>Dispuesto a recibir algunos consejos</p>"+this.formof.value.consejo)
+      mensaje:("<p style='font-weight:bold;'>Has recibido una nueva solicitud Mejora Casa "+this.formof.value.ubicacion+"</p></p> <p style='font-weight:bold;'>Nombre</p>"+this.formofdatos.value.nombre+"</p><p style='font-weight:bold;'>Telefono Celular</p>"+this.formofdatos.value.celular+"</p> <p style='font-weight:bold;'>Email</p>"+this.formofdatos.value.email+"</p><p style='font-weight:bold;'>Monto</p>"+this.formof.value.prestamo+"</p><p style='font-weight:bold;'>Capacidad de pago</p>"+this.formof.value.capacidad+
+      " <p style='font-weight:bold;'>Atrasos en otro Prestamo</p>"+this.formof.value.atrasos+" <p style='font-weight:bold;'>Motivo del préstamo</p>"+this.formof.value.motivo+" <p style='font-weight:bold;'>Dispuesto a recibir algunos consejos</p>"+this.formof.value.consejo)
     }
     ///let headers = new HttpHeaders({
     //  'Access-Control-Allow-Origin' : '*'
@@ -162,6 +193,8 @@ optionslive: Array<any> = [
 
   ngOnInit(): void {
 
+    
+
     this.email = "m@gmail.com";
     this.name = "Hayden Pierce";
     this.message = "Hello, this is Hayden.";
@@ -169,12 +202,18 @@ optionslive: Array<any> = [
     //Start php via the built in server: $ php -S localhost:8000
     this.endpoint = "./utils/enviar.php";
 
+    this.country = this.formBuilder.group(
+      {
+        second: ['', ],
+        first: ['', ],
+      }
+    );
+    
     //formof//
     this.formof = this.formBuilder.group(
       {
         prestamo: ['', [Validators.required,Validators.max(80000), Validators.min(50000)]],
-        ingreso: ['', Validators.required],
-        gastos: ['', Validators.required],
+        capacidad: ['', Validators.required],
         propietario: ['', [Validators.required]],
         ubicacion: ['', [Validators.required]],
         atrasos: ['', [Validators.required]],
@@ -239,6 +278,10 @@ optionslive: Array<any> = [
     return this.formofdatos.controls;
   }
 
+  get fomdatos2(): { [key: string]: AbstractControl } {
+    return this.country.controls;
+  }
+
 
   
   changemayor(event: any) {
@@ -278,7 +321,7 @@ optionslive: Array<any> = [
     if(event.value === "Soy propietario"){
         btn?.removeAttribute('disabled');
         btn?.setAttribute('style', 'opacity:1;');
-      if(this.formof.value.mayor==="NO"){
+      if(this.formof.value.capacidad==="No"){
       btn?.setAttribute('disabled', '');
       //btn?.setAttribute('style', 'background-color: red;');
       btn?.setAttribute('style', 'opacity:0.2;');
@@ -310,7 +353,7 @@ optionslive: Array<any> = [
 
       btn?.removeAttribute('disabled');
       btn?.setAttribute('style', 'opacity:1;');
-      if(this.formof.value.mayor==="No"){
+      if(this.formof.value.capacidad==="No"){
         btn?.setAttribute('disabled', '');
         //btn?.setAttribute('style', 'background-color: red;');
         btn?.setAttribute('style', 'opacity:0.2;');
@@ -339,6 +382,72 @@ optionslive: Array<any> = [
     this.emailid = event.emailid;
   }
 
+  change(event: any) {
+    console.log("siiiiiiiiiiiiiiiiiiiiiiiiii");
+    console.log(event.value);
+    //this.emailid = event.emailid;
+  }
+
+  mymodel = 20;
+  mymodel12 = "";
+  mymodel24 = "";
+  valuechange(newValue: any) {
+    this.mymodel = newValue;
+    console.log(newValue)
+  }
+
+  valuechange2(newValue: any) {
+    if(newValue>=50000&&newValue<=80000){
+      this.mymodel = newValue;
+      var term=12;
+      var term24=24;
+      var Tas = (.050*1.16);
+  
+    // calculate Payment OF
+    if(newValue<=80000){
+      Tas=(.050*1.16);
+    } 
+    const elementm = <HTMLInputElement> document.getElementById("sid0");
+    const paymentmount = newValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    elementm.innerHTML = "Simulacion para un crédito de $"+paymentmount;
+  
+  
+    //const calculatedPayment= ((newValue*Tas)/(1-Math.pow((1+Tas),-term)));
+    ///const cpConverted = (Math.round(calculatedPayment * 100) / 100).toFixed(2);
+    //this.mymodel12 = "$"+cpConverted.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //console.log("pago a 12 meses: "+this.mymodel12);
+    const element = <HTMLInputElement> document.getElementById("sid02P");
+    //element.innerHTML = "Pago mensual a 12 meses:"+this.mymodel12+"";
+  
+    const calculatedPayment24= ((newValue*Tas)/(1-Math.pow((1+Tas),-term24)));
+    const cpConverted24 = (Math.round(calculatedPayment24 * 100) / 100).toFixed(2);
+    this.mymodel24 = "$"+cpConverted24.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    console.log("pago a 24 meses: "+this.mymodel24 );
+    const element24 = <HTMLInputElement> document.getElementById("sid02");
+    element24.innerHTML = "Pago mensual a 24 meses:"+this.mymodel24+"";
+    element.innerHTML = "¿Puede pagar una mensualidad de "+this.mymodel24+"?";
+    const mon = <HTMLInputElement> document.getElementById("monto");
+    mon.style.display='block';
+
+    }else{
+
+      const mon = <HTMLInputElement> document.getElementById("monto");
+    mon.style.display='none';
+
+      this.mymodel = 0;
+    const elementm = <HTMLInputElement> document.getElementById("sid0");
+    elementm.innerHTML = "Simulacion para un crédito de $";
+  
+    const element = <HTMLInputElement> document.getElementById("sid02P");
+    element.innerHTML = "¿Puede pagar una mensualidad de ?";
+  
+    const element24 = <HTMLInputElement> document.getElementById("sid02");
+    element24.innerHTML = "Pago mensual a 24 meses:";
+    }
+    
+    console.log(newValue)
+  }
+
   
   onSubmit(): void {
     this.submitted = true;
@@ -363,14 +472,11 @@ optionslive: Array<any> = [
     this.show_dialog2 = !this.show_dialog2;
 
 
-    var firstRow = Number((<HTMLInputElement> document.getElementById("ing")).value);
-    var Row =Number( (<HTMLInputElement> document.getElementById("gas")).value);
     var loanAmount =Number( (<HTMLInputElement> document.getElementById("pre")).value);
     var atr = this.formof.get('atrasos')?.value;
 
     var zona = this.formof.get('ubicacion')?.value;
 
-    var suma = firstRow-Row;
 
 
   
@@ -411,7 +517,7 @@ const wcdmxpre = <HTMLInputElement> document.getElementById("wcdmxpre");
 const wgdl = <HTMLInputElement> document.getElementById("wgdl");
 const wcdmx = <HTMLInputElement> document.getElementById("wcdmx");
 
-    if(suma<8000 || atr == 'Si'){
+    if(atr == 'Si'){
 
       this.show_dialog1 = !this.show_dialog1;
       el2boton.style.display='none';
@@ -481,7 +587,6 @@ const wcdmx = <HTMLInputElement> document.getElementById("wcdmx");
     element24.innerHTML = "Pago Mensual: $"+payment24+" a 24 meses";
     this.submitted = true;
 
-    console.log(suma);
     console.log(JSON.stringify(this.formof.value, null, 2));
 
   }
@@ -547,6 +652,11 @@ export class CardSubtitleExample {
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
+}
+
+export class User{
+  Name : string | undefined;
+  PhoneNumber : Number | undefined;
 }
 
 
