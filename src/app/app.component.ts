@@ -37,15 +37,15 @@ export class AppComponent {
   user = new User(); 
 
   userNamengmodelchange(value: string | undefined){
-    console.log(value);          //Changed Value
-    console.log(this.user.Name)  //undefined
+    //console.log(value);          //Changed Value
+    //console.log(this.user.Name)  //undefined
     this.user.Name = value; // Update the value here
 }
 
 
   phoneNumberngmodelchange(value: Number | undefined){
     this.user.PhoneNumber = value;
-    console.log(value);
+    //console.log(value);
 
   }
 
@@ -164,8 +164,8 @@ optionslive: Array<any> = [
     ///let headers = new HttpHeaders({
     //  'Access-Control-Allow-Origin' : '*'
     //})
-    console.log(params);
-    console.log("mandado correo");
+    //console.log(params);
+    console.log("sendmail");
     this.http.post(this.apiurl3, params).subscribe(resp=>{
       console.log(resp);
     })
@@ -386,7 +386,6 @@ optionslive: Array<any> = [
   }
 
   change(event: any) {
-    console.log("siiiiiiiiiiiiiiiiiiiiiiiiii");
     console.log(event.value);
     //this.emailid = event.emailid;
   }
@@ -459,7 +458,7 @@ optionslive: Array<any> = [
       return;
     }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
+    //console.log(JSON.stringify(this.form.value, null, 2));
   }
 
 
@@ -619,7 +618,7 @@ const wcdmx = <HTMLInputElement> document.getElementById("wcdmx");
   
     this.enviocorreo();
     //this.sendEmail();
-    console.log(JSON.stringify(this.formofdatos.value, null, 2));
+    //console.log(JSON.stringify(this.formofdatos.value, null, 2));
   }
 
 
