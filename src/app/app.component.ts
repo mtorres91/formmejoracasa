@@ -589,7 +589,7 @@ const wcdmx = <HTMLInputElement> document.getElementById("wcdmx");
     element24.innerHTML = "Pago Mensual: $"+payment24+" a 24 meses";
     this.submitted = true;
 
-    console.log(JSON.stringify(this.formof.value, null, 2));
+    //console.log(JSON.stringify(this.formof.value, null, 2));
 
   }
 
